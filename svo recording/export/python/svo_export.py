@@ -162,9 +162,12 @@ def main():
                 video_writer.write(ocv_image_sbs_rgb)
             else:
                 # Generate file names
-                filename1 = output_path / ("left%s.png" % str(svo_position).zfill(6))
+                # filename1 = output_path / ("left%s.png" % str(svo_position).zfill(6))
+                filename1 = output_path / ("%s.jpg" % str(svo_position).zfill(8))
+                # filename2 = output_path / (("right%s.png" if app_type == AppType.LEFT_AND_RIGHT
+                                        #    else "depth%s.png") % str(svo_position).zfill(6))
                 filename2 = output_path / (("right%s.png" if app_type == AppType.LEFT_AND_RIGHT
-                                           else "depth%s.png") % str(svo_position).zfill(6))
+                                           else "%s.png") % str(svo_position).zfill(8))
                 
                 # Save Left images
                 cv2.imwrite(str(filename1), left_image.get_data())
